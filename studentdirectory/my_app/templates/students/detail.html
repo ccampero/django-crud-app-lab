@@ -1,0 +1,67 @@
+{% extends 'base.html' %} 
+{% load static %} 
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/students/student-detail.css' %}" />
+{% endblock %} 
+
+<section class="student-container">
+  <div class="student-img">
+    <img src="" alt="place holder" />
+  </div>
+  <div class="student-details">
+    <h1>{{ student.name }}</h1>
+    {% if student.age > 4 %}
+      <h2>A {{ student.age }} year old born on {{ student.birthday }}</h2>
+    {% else %}
+      <h2>A {{ student.age }}year old baby is not ready for school yet.</h2>
+    {% endif %}
+    <p>{{ student.about }}</p>
+
+    <div class="student-actions">
+      <a href="{% url 'student-update' student.id %}" class="btn warn">Edit</a>
+      <a href="{% url 'student-delete' student.id %}" class="btn danger">Delete</a>
+    </div>
+  
+<div class="studentjobs-jobs-container">
+  <section class="studentjobs">
+    <div class="subsection-title">
+      <h2>Student Jobs Records</h2>
+      <img
+        src="{% static '' %}"
+        alt="placeholder"
+      />
+      <img src="{% static '' %}" alt="placeholder" />
+      <img
+        src="{% static '' %}"
+        alt="placeholder"
+      />
+    </div> 
+    <h3>Add a Student Job Record</h3>
+    <form action="{% url 'add-studentjob' student.id %}" method="post" class="subsection-content" autocomplete="off">
+      {% csrf_token %}
+      {{ studentjobs_form.as_p }}
+      <button type="submit" class="btn submit">Add Student Job Record</button>
+    </form> 
+</section>
+</div>
+<h3>Past Job Reord</h3>
+{% if student.studentjobs_set.all.count %}
+  <table>
+    <tbody>
+      {% for studentjobs in student.studentjobs_set.all %}
+      <tr>
+        <td>{{studentjobs.date}}</td>
+        <td>{{studentjobs.get_job_display}}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% else %}
+  <div class="subsection-content">
+    <p>⚠️ {{student.name}} has not done their job!</p>
+  </div> 
+  </div>
+  </div>
+</section>
+{% endif %}  
+ 

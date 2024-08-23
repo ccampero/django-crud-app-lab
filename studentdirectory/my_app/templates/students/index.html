@@ -1,0 +1,40 @@
+{% extends 'base.html' %} 
+{% load static %} 
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/students/student-index.css' %}"/>
+{% endblock %} 
+{% block content %}
+
+<section class="page-header">
+  <h1>Student List</h1>
+  <img src="{% static 'images/studentdirectory.png' %}" alt="place holder image" />
+  <img src="{% static 'images/studentdirectory.png' %}" alt="place holder image" />
+  <img src="{% static 'images/studentdirectory.png' %}" alt="place holder image" />
+  <img src="{% static 'images/studentdirectory.png' %}" alt="place holder image" />
+</section>
+
+<section class="card-container">
+  {% for student in students %}
+    <div class="card">
+        <a href="{% url 'student-detail' student.id %}">
+      <div class="card-content">
+        <div class="card-img-container">
+          <img
+            src="{% static '/home/mccampero/code/ga/labs/django-crud-app-lab/studentdirectory/my_app/static/images/Student directory header.png' %}"
+            alt="place holder image"
+          />
+        </div>
+        <h2 class="card-title">{{ student.name }}</h2>
+        {% if student.age > 5 %}
+        <p>A {{ student.age }} year old born on {{ student.birthday }}</p>
+        {% else %}
+        <p>A {{ student.age }} year old baby not ready for school yet.</p>
+        {% endif %}
+        <p><small>{{ student.description }}</small></p>
+      </div>
+      </a>
+    </div>
+  {% endfor %}
+</section>
+
+{% endblock %}

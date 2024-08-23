@@ -1,0 +1,18 @@
+{% extends 'base.html' %}  
+{% load static %} 
+{% block content %}
+
+<div class="page-header">
+  <h1>Delete Student?</h1>
+  <img src="{% static '' %}" alt="placeholder" />
+</div>
+
+<h2>Are you sure you want to delete {{ student.name }}?</h2>
+
+<form action="" method="post" class="form">
+  {% csrf_token %}
+  <a href="{% url 'student-detail' student.id %}" class="btn secondary">Cancel</a>
+  <button type="submit" class="btn danger">Yes - Delete!</button>
+</form>
+
+{% endblock %}
