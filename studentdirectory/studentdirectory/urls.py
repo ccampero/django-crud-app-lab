@@ -28,11 +28,22 @@ urlpatterns = [
     path('students/create/', views.StudentCreate.as_view(), name='student-create'),
     path('students/<int:pk>/update/', views.StudentUpdate.as_view(), name='student-update'),
     path('students/<int:pk>/delete', views.StudentDelete.as_view(), name='student-delete'),
-    # path(
-    #     'students/<int:student_id>/add-job/', 
-    #     views.add_studentjob, 
-    #     name='add-studentjob'
-    # ),
+    path(
+        'students/<int:student_id>/add-studentjob/', 
+        views.add_studentjob, 
+        name='add-studentjob'
+    ),
+    path('availablejobs/create/', views.AvailableJobsCreate.as_view(), name='availablejobs-create'),
+    path('availablejobs/<int:pk>/', views.AvailableJobsDetail.as_view(), name='availablejobs-detail'),
+    path('availablejobs/', views.AvailableJobsList.as_view(), name='availablejobs-index'),
+        #Existing urls above
+    path('availablejobs/<int:pk>/update/', views.AvailableJobsUpdate.as_view(), name='availablejobs-update'),
+    path('availablejobs/<int:pk>/delete/', views.AvailableJobsDelete.as_view(), name='availablejobs-delete'),
+    # New URL to associate a toy with a cat
+    path('students/<int:student_id>/associate-availablejobs/<int:availablejobs_id>/', views.associate_availablejobs, name='associate-availablejobs'),
+    path('students/<int:student_id>/remove-availablejobs/<int:availablejobs_id>/', views.remove_availablejobs, name='remove-availablejobs'),
+
+
     
 
 ]

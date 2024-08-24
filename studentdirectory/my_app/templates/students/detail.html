@@ -37,16 +37,22 @@
       />
     </div> 
     <h3>Add a Student Job Record</h3>
-    <form action="{% url 'add-studentjob' student.id %}" method="post" class="subsection-content" autocomplete="off">
+    <form action="{% url 'associate-availablejobs' student.id availablejobs.id %}" method="post">
       {% csrf_token %}
       {{ studentjobs_form.as_p }}
-      <button type="submit" class="btn submit">Add Student Job Record</button>
+      <button type="submit" class="btn submit">Give Job</button>
     </form> 
 </section>
 </div>
 <h3>Past Job Reord</h3>
 {% if student.studentjobs_set.all.count %}
   <table>
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Job</th>
+      </tr>
+    </thead>
     <tbody>
       {% for studentjobs in student.studentjobs_set.all %}
       <tr>
@@ -60,8 +66,58 @@
   <div class="subsection-content">
     <p>⚠️ {{student.name}} has not done their job!</p>
   </div> 
+  {% endif %} 
   </div>
   </div>
 </section>
-{% endif %}  
+<section class="availablejobs">
+  <div class="subsection-title">
+    <h2>Jobs</h2>
+    <img src="{% static 'images/string.svg' %}" alt="A ball of string" />
+    <img src="{% static 'images/mouse.svg' %}" alt="A mouse" />
+    <img src="{% static 'images/fish.svg' %}" alt="A fishy toy" />
+  </div>
+  <h3>{{ student.name }}'s Jobs</h3>
+  <div class="subsection-content">
+    {% if student.availablejobs.count %} 
+      {% for availablejobs in student.availablejobs.all %}
+        <div class="availablejobs-container">
+          <div class="color-block" style="background-color: {{ availablejobs.color }}"></div>
+          <a href="{% url 'availablejobs-detail' availablejobs.id %}">
+            <p>A {{ availablejobs.color }} {{ availablejobs.name }}</p>
+          </a>
+          <form action="{% url 'remove-availablejobs' student.id availablejobs.id %}" method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">Remove Job</button>
+          </form>
+        </div>
+      {% endfor %} 
+    {% else %}
+      <p class="no-availablejobs">{{student.name}} doesn't have any jobs!</p>
+    {% endif %}
+  </div>
+
+  <h3>Available Jobs</h3>
+  <div class="subsection-content">
+    {% if availablejobs.count %} 
+    {% for availablejobs in availablejobs.all %}
+      <div class="availablejobs-container">
+        <div class="color-block" style="background-color: {{ availablejobs.color }}"></div>
+        <a href="{% url 'availablejobs-detail' availablejobs.id %}">
+          <p>A {{ availablejobs.color }} {{ availablejobs.name }}</p>
+        </a>
+        <form action="{% url 'associate-availablejobs' student.id availablejobs.id %}" method="post">
+          {% csrf_token %}
+          <button type="submit" class="btn submit">Give job</button>
+        </form>
+      </div>
+    {% endfor %} 
+  {% else %}
+    <p class="all-availablejobs">{{student.name}} already has all the available jobs 🥳</p>
+  {% endif %}
+</div>
+
+  </div>
+</section>
+
  

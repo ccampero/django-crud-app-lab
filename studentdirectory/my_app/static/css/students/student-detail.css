@@ -1,4 +1,4 @@
-.cat-container {
+.student-container {
     padding: 35px 30px;
     display: flex;
     flex-direction: column;
@@ -6,7 +6,7 @@
     justify-content: center;
   }
   
-  .cat-img {
+  .student-img {
     width: 75%;
     max-width: 350px;
   }
@@ -16,15 +16,15 @@
     border-radius: var(--card-border-radius);
   }
   
-  .cat-details {
+  .student-details {
     width: 98%;
   }
   
-  .cat-actions {
+  .student-actions {
     margin-top: 20px;
   }
   
-  .feedings-toy-container {
+  .studentjobs-job-container {
     display: flex;
     flex-direction: column;
     padding-bottom: 20px;
@@ -41,7 +41,7 @@
     margin: 0 8px;
   }
   
-  .toy-container {
+  .job-container {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
@@ -54,47 +54,47 @@
     margin-right: 10px;
   }
   
-  .unfed,
-  .fed,
-  .no-toys,
-  .all-toys {
+  .no,
+  .yes,
+  .no-jobs,
+  .all-jobs {
     margin: 0;
     font-weight: bold;
   }
   
-  .unfed,
-  .no-toys {
+  .no,
+  .no-jobs {
     color: var(--danger);
   }
   
-  .fed,
-  .all-toys {
+  .yes,
+  .all-jobs {
     color: var(--submit);
   }
   
-  .cat-details h1 {
+  .student-details h1 {
     font-size: var(--font-xxl);
     margin: 15px 0 3px;
   }
   
-  .cat-details h2 {
+  .student-details h2 {
     font-size: var(--font-xl);
     margin: 0 0 10px;
     margin-top: 0;
     margin-bottom: 10px;
   }
   
-  .cat-details h3 {
+  .student-details h3 {
     margin: 20px 0 10px;
     font-size: var(--font-l);
   }
   
-  .cat-details p {
+  .student-details p {
     font-size: var(--font-reg);
     margin: 5px 0;
   }
   
-  .feedings-toy-container > section {
+  .studentjobs-job-container > section {
     width: 80%;
     min-width: 360px;
     border: var(--borders);
@@ -116,14 +116,14 @@
     margin-left: 16px;
   }
   
-  .feedings h2,
-  .toys h2 {
+  .studentjobs h2,
+  .jobs h2 {
     font-size: 3.2rem;
     margin: 0;
   }
   
-  .feedings h3,
-  .toys h3 {
+  .studentjobs h3,
+  .jobs h3 {
     font-size: var(--font-xl);
     margin: 10px 0;
   }
@@ -140,38 +140,38 @@
     padding: 3px;
   }
   
-  .feedings table {
+  .studentjobs table {
     width: calc(100% - 16px);
     text-align: left;
     border-collapse: collapse;
     margin: 0 8px;
   }
   
-  .feedings td {
+  .studentjobs td {
     padding: 8px 5px;
     font-size: var(--font-reg);
   }
   
-  .feedings th {
+  .studentjobs th {
     font-size: var(--font-l);
     padding: 5px 5px 0;
     border-bottom: rgb(36, 116, 248) solid 2px;
   }
   
-  .feedings tr:nth-child(even) {
+  .studentjobs tr:nth-child(even) {
     background-color: #f3f3fd;
   }
   
-  .toy-container p {
+  .job-container p {
     margin: 12px 0;
   }
   
-  .toy-container a {
+  .job-container a {
     text-decoration: none;
     color: #111;
   }
   
-  .toy-container .btn {
+  .job-container .btn {
     padding: 3px 10px;
     margin-left: 10px;
   }
@@ -188,32 +188,32 @@
   }
   
   @media only screen and (min-width: 768px) {
-    .cat-container {
+    .student-container {
       padding: 35px 30px;
       flex-direction: row;
       align-items: center;
       justify-content: start;
     }
   
-    .cat-img {
+    .student-img {
       width: 25%;
       max-width: 250px;
       margin-right: 25px;
     }
   
-    .feedings-toy-container {
+    .studentjobs-job-container {
       flex-direction: row;
       justify-content: space-around;
       align-items: flex-start;
     }
   
-    .feedings-toy-container > section {
+    .studentjobs-job-container > section {
       width: 45%;
     }
   }
   
   @media only screen and (min-width: 1024px) {
-    .feedings-toy-container {
+    .studentjobs-job-container {
       padding: 0 40px;
     }
   }

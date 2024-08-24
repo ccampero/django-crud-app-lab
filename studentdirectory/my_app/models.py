@@ -9,12 +9,22 @@ JobStatus = (
 
 
 # Create your models here.
+class AvailableJobs(models.Model):
+    name = models.CharField(max_length=50)
+    color = models.CharField(max_length=50)
+    
+    def __str__(self):
+        return self.name
+    
+    def get_absolute_url(self):
+        return reverse('availablejobs_detail', kwargs={'pk': self.id})
 
 class Student(models.Model):
     name = models.CharField(max_length=100)
     birthday = models.DateField(default=date.today)
     about = models.TextField(max_length=250)
     age = models.IntegerField()
+    availablejobs = models.ManyToManyField(AvailableJobs)
 
     def __str__(self):
         return self.name
@@ -36,5 +46,8 @@ class StudentJobs(models.Model):
     class Meta:
         ordering = ['-date']
     
+
+    
+        
     
     

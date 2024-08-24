@@ -1,0 +1,18 @@
+{% extends 'base.html' %} 
+{% load static %} 
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/availablejobs/availablejobs-detail.css' %}" />
+{% endblock %} 
+{% block content %}
+
+<div class="card" style="border-color: {{ toy.color }}">
+  <div class="card-bg" style="background-color: {{ toy.color }}"></div>
+  <div class="card-content">
+    <h2>{{ availablejobs.name }}</h2>
+    <p>A {{ availablejobs.color }} toy</p>
+  </div>
+</div>
+<a href="{% url 'availablejobs-update' availablejobs.id %}" class="btn warn">Edit</a>
+<a href="{% url 'availablejobs-delete' availablejobs.id %}" class="btn danger">Delete</a>
+
+{% endblock %}
